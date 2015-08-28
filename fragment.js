@@ -56,14 +56,7 @@
 																						\
 					Fragment.onWebCallback('jQuery ready');								\
 					var regex = /a/gi;													\
-					$('body *').contents()												\
-						.filter(function(){												\
-							return this.nodeType === 3;									\
-						})																\
-						.each(function(){												\
-							$(this).html($(this).text().replace(regex, '<b>a</b>'));	\
-						});																\
-																						\
+					$('body *').contents().filter(function(){return this.nodeType === 3;}).each(function(){$(this).html($(this).text().replace(regex, '<b>a</b>'));});\
 			});																			\
 			return 'js executed';														\
 		})()";
