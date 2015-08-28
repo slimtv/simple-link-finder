@@ -56,6 +56,7 @@
 				jQuery(document).ready(function($){										\
 					Fragment.onWebCallback('jQuery ready');								\
 					function callback( str ){											\
+						Fragment.onWebCallback('find: ' + str);							\
 						return '<b>' + str + '<\/b>';									\
 					};																	\
 					$('body *').replaceText( /a/gi, callback );							\
