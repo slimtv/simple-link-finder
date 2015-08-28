@@ -53,14 +53,14 @@
 			getScript([	'http://code.jquery.com/jquery-latest.min.js', 					\
 						'https://raw.githubusercontent.com/cowboy/jquery-replacetext/master/jquery.ba-replacetext.min.js'],\
 						function() {													\
-				$(function(){										\
+													\
 					Fragment.onWebCallback('jQuery ready');								\
 					function callback( str ){											\
 						Fragment.onWebCallback('find: ' + str);							\
 						return '<b>' + str + '<\/b>';									\
 					};																	\
 					$('body *').replaceText( /a/gi, callback );							\
-				});																		\
+																						\
 			});																			\
 			return 'js executed';														\
 		})()";
