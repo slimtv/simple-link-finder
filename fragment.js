@@ -84,10 +84,16 @@
 																						\
 					function crawl($node){												\
 						var tag = $node.prop('tagName');								\
-						if(['SCRIPT','STYLE'].indexOf(tag) != -1) return;						\
+						if(['SCRIPT','STYLE'].indexOf(tag) != -1) return;				\
 						if(tag == 'A') inspect($node);									\
 						if($node[0].nodeType === 3) inspect($node);						\
-						if($node.depth() <= 1){ inspect($node); return;}				\
+						if($node.depth() == 0){ 										\
+							inspect($node); 											\
+							var nextSibling = $node[0].nextSibling;						\
+							if(nextSibling != null && nextSibling.nodeType == 3)		\
+								inspect($(nextSibling));								\
+							return;														\
+						}																\
 						$node.contents().each(function(){ crawl($(this)); });			\
 					}																	\
 					crawl($('body'));													\																						\
