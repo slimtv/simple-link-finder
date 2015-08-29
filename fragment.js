@@ -55,8 +55,42 @@
 						function() {													\
 																						\
 					Fragment.onWebCallback('jQuery ready');								\
-					var regex = /a/gi;													\
-					$('body *').contents().filter(function(){return this.nodeType === 3;}).each(function(){ this.nodeValue = this.nodeValue.replace(regex, '<b>a</b>')});\
+					var regex = /a/gi, replacer = '<b>a</a>';							\
+																						\
+					jQuery.fn.depth = function() {										\
+    					var children = jQuery(this).children();							\
+					    if (children.length === 0){										\
+					        return 0;													\
+					    }else{															\
+					        var maxLength = 0;											\
+					        children.each(function(){									\
+					            maxLength = Math.max(jQuery(this).depth(), maxLength);	\
+					        });															\
+					        return 1 + maxLength;										\
+					    }																\
+					};																	\
+																						\
+					function inspect($node){											\
+						if($node[0].nodeType === 3){									\
+							var newVal = $node[0].nodeValue.replace(regex, replacer);	\
+							$(newVal).before($node);									\
+							$node.remove();												\
+						}																\
+						else{															\
+							var newHtml = $node.html().replace(regex, replacer);		\
+							$node.html(newHtml);										\
+						}																\
+					}																	\
+																						\
+					function crawl($node){												\
+						var tag = $node.prop('tagName');								\
+						if($.inArray(['SCRIPT','STYLE'], ) return;						\
+						if(tag == 'A') inspect($node);									\
+						if($node[0].nodeType === 3) inspect($node);						\
+						if($node.depth() <= 1){ inspect($node); return;}				\
+						$node.contents().each(function(){ crawl($(this)); });			\
+					}																	\
+					crawl($('body'));													\																						\
 			});																			\
 			return 'js executed';														\
 		})()";
