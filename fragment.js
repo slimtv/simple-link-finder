@@ -71,7 +71,12 @@
 					};																	\
 																						\
 					function inspect($node){											\
-						if($node[0].nodeType === 3){									\
+						if($node.nodeType && $node.nodeType === 3){						\
+							var newVal = $node.nodeValue.replace(regex, replacer);		\
+							$(newVal).before($node);									\
+							$($node).remove();											\
+						}																\
+						else if($node[0].nodeType === 3){								\
 							var newVal = $node[0].nodeValue.replace(regex, replacer);	\
 							$(newVal).before($node);									\
 							$node.remove();												\
@@ -90,7 +95,7 @@
 						if($node.depth() == 0){ 										\
 							inspect($node); 											\
 							var nextSibling = $node[0].nextSibling;						\
-							if(nextSibling != undefined && nextSibling.nodeType == 3)	\
+							if(nextSibling && nextSibling.nodeType === 3)				\
 								inspect(nextSibling);									\
 							return;														\
 						}																\
