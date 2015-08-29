@@ -54,6 +54,7 @@
 						'https://raw.githubusercontent.com/cowboy/jquery-replacetext/master/jquery.ba-replacetext.min.js'],\
 						function() {													\
 																						\
+					var $ = jQuery;														\
 					Fragment.onWebCallback('jQuery ready');								\
 					var regex = /a/gi, replacer = '<b>a</b>';							\
 																						\
