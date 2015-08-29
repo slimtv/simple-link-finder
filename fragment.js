@@ -100,7 +100,7 @@
 								inspect(nextSibling);									\
 							return;														\
 						}																\
-						$node.contents().each(function(){ crawl($(this)); });			\
+						$node.children().each(function(){ crawl($(this)); });			\
 					}																	\
 					crawl($('body'));													\																						\
 			});																			\
