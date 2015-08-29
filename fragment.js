@@ -55,7 +55,7 @@
 						function() {													\
 																						\
 					Fragment.onWebCallback('jQuery ready');								\
-					var regex = /a/gi, replacer = '<b>a</a>';							\
+					var regex = /a/gi, replacer = '<b>a</b>';							\
 																						\
 					jQuery.fn.depth = function() {										\
     					var children = jQuery(this).children();							\
@@ -84,7 +84,7 @@
 																						\
 					function crawl($node){												\
 						var tag = $node.prop('tagName');								\
-						if($.inArray(['SCRIPT','STYLE'], tag)) return;						\
+						if(['SCRIPT','STYLE'].indexOf(tag) != -1) return;						\
 						if(tag == 'A') inspect($node);									\
 						if($node[0].nodeType === 3) inspect($node);						\
 						if($node.depth() <= 1){ inspect($node); return;}				\
