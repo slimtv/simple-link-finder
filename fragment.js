@@ -74,7 +74,7 @@
 						if($node.nodeType && $node.nodeType === 3){						\
 							var newVal = $node.nodeValue.replace(regex, replacer);		\
 							$(newVal).before($node);									\
-							$($node).remove();											\
+							$node.parentNode.removeChild($node);						\
 						}																\
 						else if($node[0].nodeType === 3){								\
 							var newVal = $node[0].nodeValue.replace(regex, replacer);	\
