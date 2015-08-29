@@ -74,7 +74,8 @@
 					function inspect($node){											\
 						if($node.nodeType && $node.nodeType === 3){						\
 							var newVal = $node.nodeValue.replace(regex, replacer);		\
-							$($node).before(newVal).remove();							\
+							$($node).before(newVal);									\
+							$node.parentNode.removeChild($node);						\
 						}																\
 						else if($node[0].nodeType === 3){								\
 							var newVal = $node[0].nodeValue.replace(regex, replacer);	\
@@ -90,7 +91,7 @@
 					function crawl($node){												\
 						var tag = $node.prop('tagName');								\
 						if(['SCRIPT','STYLE'].indexOf(tag) != -1) return;				\
-						if(tag == 'A') inspect($node);									\
+						/*if(tag == 'A') inspect($node);*/								\
 						if($node[0].nodeType === 3) inspect($node);						\
 						if($node.depth() == 0){ 										\
 							inspect($node); 											\
