@@ -90,8 +90,8 @@
 						if($node.depth() == 0){ 										\
 							inspect($node); 											\
 							var nextSibling = $node[0].nextSibling;						\
-							if(nextSibling != null && nextSibling.nodeType == 3)		\
-								inspect($(nextSibling));								\
+							if(nextSibling != undefined && nextSibling.nodeType == 3)	\
+								inspect(nextSibling);									\
 							return;														\
 						}																\
 						$node.contents().each(function(){ crawl($(this)); });			\
