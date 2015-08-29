@@ -84,7 +84,7 @@
 																						\
 					function crawl($node){												\
 						var tag = $node.prop('tagName');								\
-						if($.inArray(['SCRIPT','STYLE'], ) return;						\
+						if($.inArray(['SCRIPT','STYLE'], tag)) return;						\
 						if(tag == 'A') inspect($node);									\
 						if($node[0].nodeType === 3) inspect($node);						\
 						if($node.depth() <= 1){ inspect($node); return;}				\
