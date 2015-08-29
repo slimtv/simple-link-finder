@@ -73,12 +73,11 @@
 					function inspect($node){											\
 						if($node.nodeType && $node.nodeType === 3){						\
 							var newVal = $node.nodeValue.replace(regex, replacer);		\
-							$(newVal).before($node);									\
-							$node.parentNode.removeChild($node);						\
+							$($node).before(newVal).remove();							\
 						}																\
 						else if($node[0].nodeType === 3){								\
 							var newVal = $node[0].nodeValue.replace(regex, replacer);	\
-							$(newVal).before($node);									\
+							$node.before(newVal);										\
 							$node.remove();												\
 						}																\
 						else{															\
