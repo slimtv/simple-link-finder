@@ -79,7 +79,7 @@
 						}																\
 						else if($node[0].nodeType === 3){								\
 							var newVal = $node[0].nodeValue.replace(regex, replacer);	\
-							$node.before(newVal);										\
+							$(newVal).before($node);									\
 							$node.remove();												\
 						}																\
 						else{															\
