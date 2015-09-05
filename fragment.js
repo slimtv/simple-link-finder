@@ -3,7 +3,6 @@
 	
 	function onCreateView(){
 			Fragment.setHasOptionsMenu(true);
-			Fragment.getMainActivity().getSupportActionBar().show();
 			return web = Fragment.asWebPanel();
 	}
 	
